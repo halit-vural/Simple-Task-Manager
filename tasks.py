@@ -16,6 +16,7 @@ Title [20] >> Laundry
 '''
 
 def new():
+    print()
     print('='*20,'Add new task', '='*20)
     
     while True:
@@ -23,12 +24,14 @@ def new():
         date = input('Date[now] >> ')
         time = input('Time [now] >> ')
 
+        print()
         print('New task added:')
         print(title, time, date)
 
         with open('tasks.csv', 'a') as f:
             f.write(title + ',' + time + ',' + date + '\n')
-        new = input('Enter new? [Y/n]>>')
+        print()
+        new = input('Enter new? [Y/n]>> ')
         if new == 'n' or new == 'N':
             break
         

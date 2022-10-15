@@ -6,8 +6,7 @@ def main():
 	while cmd != 'Q':
 		screen.clear()
 		screen.disp_main()
-		cmd = input()
-		cmd = cmd.upper()
+		cmd = get_command('>> ')
 		if cmd == 'N':
 			tasks.new()
 		elif cmd == 'C':
@@ -18,6 +17,10 @@ def main():
 			print('Goodbye.')
 		else:
 			print('The command not available.')
+
+def get_command(msg):
+    cmd = input(msg)
+    return cmd.upper()
 
 main()
 
