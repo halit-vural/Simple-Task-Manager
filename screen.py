@@ -1,7 +1,5 @@
 def disp_main():
-	print('''
-	================== Task Manager ==================
-	''')
+	print('='*20, 'Task Manager', '='*20)
 	list_tasks()
 	list_commands()
 
