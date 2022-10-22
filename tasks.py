@@ -15,21 +15,39 @@ Title [20] >> Laundry
 
 '''
 
+def list(filter='all'):
+    with open('tasks.csv', 'r') as f:
+        i = 1
+        for line in f.readlines():
+            print(i,'-', line)
+            i += 1
+
 def new():
     print()
     print('='*20,'Add new task', '='*20)
     
     while True:
         title = input('Title[20] >> ')
+
+        if title == '':
+            break;
+            
         date = input('Date[now] >> ')
+
+        if date == '':
+            date = 'now'
+            
         time = input('Time [now] >> ')
+
+        if time == '':
+            time = 'now'
 
         print()
         print('New task added:')
         print(title, time, date)
 
         with open('tasks.csv', 'a') as f:
-            f.write(title + ',' + time + ',' + date + '\n')
+            f.write(title + ',' + date + ',' + time + '\n')
         print()
         new = input('Enter new? [Y/n]>> ')
         if new == 'n' or new == 'N':
