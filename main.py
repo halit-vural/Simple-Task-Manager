@@ -2,7 +2,7 @@ import tasks
 import screen
 
 def main():
-    cmd = ' '
+    cmd = ''
     while cmd != 'Q':
         screen.clear()
         screen.disp_main()
@@ -10,7 +10,9 @@ def main():
         execute_command(cmd)
 
 def get_command(msg):
-    cmd = input(msg)
+    cmd = ''
+    while cmd == '':
+        cmd = input(msg)
     return cmd.upper()
 
 def execute_command(command):

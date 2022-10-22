@@ -15,7 +15,7 @@ Title [20] >> Laundry
 
 '''
 
-def list(filter='all', max=3):
+def list(filter='all', max=15):
     with open('tasks.csv', 'r') as f:
         i = 1
         for line in f.readlines():
