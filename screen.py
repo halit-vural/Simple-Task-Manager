@@ -8,7 +8,7 @@ def disp_main(filter='all'):
 
 def list_commands():
     print('(N)ew (C)omplete  (#)Cancel  (F)ocus  (L)deLay  (Q)uit')
-    print('(S)how completed  (X)NeXt Page (P)revious Page')
+    print('(S)how completed  (X)neXt page (P)revious page')
     print()
 
 def clear():

@@ -15,12 +15,15 @@ Title [20] >> Laundry
 
 '''
 
-def list(filter='all'):
+def list(filter='all', max=3):
     with open('tasks.csv', 'r') as f:
         i = 1
         for line in f.readlines():
             print(i,'-', line)
             i += 1
+            if i > max:
+                print('. . .')
+                break
 
 def new():
     print()
