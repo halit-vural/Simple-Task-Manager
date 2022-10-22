@@ -1,4 +1,3 @@
-
 def disp_main():
     print('='*20, 'Task Manager', '='*20)
     list_tasks()
@@ -14,8 +13,6 @@ def list_commands():
     print('(N)ew (C)omplete  (#)Cancel  (F)ocus  (L)deLay  (Q)uit')
     print('(S)how completed  (X)NeXt Page (P)revious Page')
     print()
-
-
 
 def clear():
 	print('''  
