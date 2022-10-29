@@ -59,8 +59,7 @@ def new():
 def	complete():
 	print('complete task')
 
-def calculate():
-    
+ 
 
 def cancel():
 	print('cancel task')
