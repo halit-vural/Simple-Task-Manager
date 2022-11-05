@@ -15,15 +15,29 @@ Title [20] >> Laundry
 
 '''
 
-def list(filter='all', max=15):
+def disp_list(filter='all', max=5):
+    tasks = get_list(filter)
+    i = 1
+    for task in tasks:
+        print_task(i, task)
+        i += 1
+        if i > max:
+            print('. . .')
+            break
+def print_task(idx, task):
+    title, date, time = task
+    '{lorem:>10}'.format(lorem='Lorem Ipsum')
+    print(f'{idx:<2} - {title:<20} {date:<15} {time:<10}')
+    
+
+def get_list(filter='all'):
+    tasks = []
     with open('tasks.csv', 'r') as f:
-        i = 1
         for line in f.readlines():
-            print(i,'-', line)
-            i += 1
-            if i > max:
-                print('. . .')
-                break
+            line = line.strip()            #clear new line char '\n'
+            task = line.split(',')        #give me a list
+            tasks.append(task)            # add it to my list tasks=(list of list)
+    return tasks
 
 def new():
     print()
@@ -31,14 +45,15 @@ def new():
     
     while True:
         title = input('Title[20] >> ')
-
+        title = title.substring[0,20]    #clip to length 20
+        
         if title == '':
             break;
             
-        date = input('Date[now] >> ')
+        date = input('Date[today] >> ')
 
         if date == '':
-            date = 'now'
+            date = 'today'
             
         time = input('Time [now] >> ')
 

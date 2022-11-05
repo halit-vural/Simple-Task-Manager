@@ -2,7 +2,7 @@ import tasks
 
 def disp_main(filter='all'):
     print('='*20, 'Task Manager', '='*20)
-    tasks.list(filter)
+    tasks.disp_list(filter)
     print()
     list_commands()
 
