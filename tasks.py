@@ -51,33 +51,73 @@ def new(new_idx):
         
         return new_task
         
-def	complete(tasks, idx):
-    task = tasks[idx]
-    status = task[-1]
-    if status == 'completed':
-        new_status = 'new'        #toggle status
+def	complete(tasks, id):
+    print('complete task: ', id)
+    task = get_task(tasks, id)
+    print('task:', task)
+    if task:
+        status = task[-1]
+        if status == 'completed':
+            new_status = 'new'        #toggle status
+        else:
+            new_status = 'completed'
+    
+        task[-1] = new_status
+    
+        if find_replace(tasks, task):
+            print('replaced..')
+            update_in_file(tasks)
     else:
-        new_status = 'completed'
+        print('Task not found..')
+    return tasks
 
-    task[-1] = new_status
+def is_completed(task):
+    s = status(task)
+    return s == 'completed'
 
-    update(tasks)
-    return task
+def status(task):
+    return task[-1]
+    
+def find_replace(data, new):
+    print('find replace...')
+    found = False
+    for idx in range(len(data)):
+        task = data[idx]
+        id = task[0]
+        # print(id)
+        if new[0] == id:
+            found = True
+            # print('you found it!')
+            data[idx] = new
+    if not found:
+        print('Nothing to change..')
+        return False
+    return True            
+            
+
+def get_id(task):
+    return task[0]
+
+def get_task(tasks, id):
+    for task in tasks:
+        if task[0] == id:
+            return task
+    return None
 
 def write(task):
-    print(task)
+    print('writing..', task)
     new_idx, title, date, time, status = task
     with open('tasks.csv', 'a') as f:
             f.write(new_idx + ',' + title + ',' + date + ',' + time + ',' + status + '\n')
   
-def update(tasks):
+def update_in_file(tasks):
     '''Find the task in the file and write the new data'''
     print('writing into file...')
     with open('tasks.csv', 'w') as f:
         for task in tasks:
             print(task)
             idx, title, date, time, status = task
-            f.write(idx + ',' + title + ',' + date + ',' + time + ',' + status + '\n')
+            f.write(f'{idx},{title},{date},{time},{status}\n')
       
 
 def cancel():
