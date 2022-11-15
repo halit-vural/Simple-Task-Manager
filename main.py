@@ -46,7 +46,8 @@ def execute(command, on_tasks):
         if idx != '':
             idx = int(idx)
             # print('selected task:', on_tasks[idx-1][0])
-            task_id = on_tasks[idx-1][0][0]
+            selected_task = on_tasks[idx-1][0]
+            task_id = selected_task[0]
             # print('task id: ', task_id)
             data = tasks.complete(data, task_id)
             

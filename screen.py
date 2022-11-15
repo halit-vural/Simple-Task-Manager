@@ -1,7 +1,7 @@
 import tasks as t
 
 def disp_main(items, filter='all'):
-    print('='*21, 'Task Manager', '='*21)
+    print('='*22, 'Task Manager', '='*22)
     items = disp_list(items, filter)
     print()
     list_commands()
@@ -29,6 +29,8 @@ def disp_list(items, filter='all', max=5):
             # if i > max:
             #     print('. . .')
             #     break
+        for _ in range(i, 20):
+            print()            #fill the space with blank lines
     else:
         print()
         print('No items available...')
@@ -41,7 +43,7 @@ def print_task(idx, task):
     _, title, date, time, status = task
 
     if status == 'completed':
-        title = '-'*3 + title + '-'*3
+        title = '-'*3 + (title) + '-'*3
         
     print(f'{idx:<2} - {title:<30} {date:<15} {time:<10}')   # tabular format with character counts 
 
