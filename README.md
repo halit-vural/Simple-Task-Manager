@@ -34,6 +34,8 @@ We will use the MoSCoW method to analyze and group our requirements.
 - Users can group the tasks in different epics/stories.
 ## 3. Screen Designs
 ### Home Screen:
+
+```
 ================== Task Manager ==================
 1 - Laundry                                         3pm          Today
 2 - Car wash                                       1pm          Tomorrow
@@ -43,10 +45,11 @@ We will use the MoSCoW method to analyze and group our requirements.
 (S)how completed  (X)NeXt Page (P)revious Page
 
 >>_
-
+```
         
 
 ### New Task Screen:
+```
 Add a new task:
 Title [20] >> Car maintenance
 Date [now] >> 12/12/2022
@@ -66,7 +69,7 @@ Laundry 			3pm		Today
 
 Enter new? [Y/n] >>n
 
-
+```
 
 → This page will return to the home screen when finished.
 
@@ -82,7 +85,7 @@ So let’s begin with the home screen and adding a new task.
 
 Complete code will be like:
 
-<code>
+```
 def disp_main_screen():
 	print('''
 	================== Task Manager ==================
@@ -92,8 +95,8 @@ def disp_main_screen():
 
 def list_tasks():
 	print('''
-	1 - Laundary               3pm          Today
-	2 - Car wash               1pm          Tomorrow''')
+	1 - Laundary	3pm	Today
+	2 - Car wash	1pm	Tomorrow''')
 
 def list_commands():
 	print('''
@@ -113,8 +116,7 @@ def cancel_task():
 def clear_screen():
 	print('''  
 	   ''' *30)
-	
-
+	   
 def main():
 	cmd = ' '
 	while cmd != 'Q':
@@ -136,20 +138,21 @@ def main():
 
 main()  # this line will run all the program
 
-</code>
+```
 
 
 ## Version 0.1.1: 
 Defines the new task screen function.
 
 ### New Task Screen:
+```
 Add a new task:
 Title [20] >> Car maintenance
 Date [now] >> 12/12/2022
 Time [now] >>2pm
 
 New task added:
-Car maintenance		2pm 		12/December/2022
+Car maintenance 	2pm	12/December/2022
 Enter new? [Y/n] >>
 
 Add a new task:
@@ -158,11 +161,11 @@ Date [now] >>
 Time [now] >>
 
 New task added:
-Laundry 			3pm		Today
+Laundry 	3pm	Today
 
 Enter new? [Y/n] >>n
 
-
+```
 
 → This page will return to the home screen when finished.
 
