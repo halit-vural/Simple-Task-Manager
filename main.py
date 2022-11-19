@@ -42,13 +42,9 @@ def execute(command, on_tasks):
             
     elif command == 'C':               # complete/uncomplete
         # print(data)
-        idx = input("Select task:")
-        if idx != '':
-            idx = int(idx)
-            # print('selected task:', on_tasks[idx-1][0])
-            selected_task = on_tasks[idx-1][0]
-            task_id = selected_task[0]
-            # print('task id: ', task_id)
+        task_id = select_task(on_tasks)
+        if task_id:
+            print('task id: ', task_id)
             data = tasks.complete(data, task_id)
             
     elif command == 'S':            # show/clear completed
@@ -61,14 +57,26 @@ def execute(command, on_tasks):
     #     focus = True
         
     elif command == '#':
-        tasks.cancel()
+        # print(data)
+        task_id = select_task(on_tasks)
+        if task_id:
+            print('task id: ', task_id)
+            data = tasks.cancel(data, task_id)
     elif command == 'Q':
         print('Goodbye.')
     else:
         print('The command not available.')
 
 
-
+def select_task(on_tasks):
+    idx = input("Select task:")
+    task_id = ''
+    if idx != '':
+        idx = int(idx)
+        # print('selected task:', on_tasks[idx-1][0])
+        selected_task = on_tasks[idx-1][0]
+        task_id = selected_task[0]
+    return task_id
 
 
 

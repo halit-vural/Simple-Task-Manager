@@ -39,7 +39,7 @@ def new(new_idx):
         new_idx = str(new_idx)
         status = 'new'
         new_task = [new_idx, title, date, time, status]
-        write(new_task)
+        add(new_task)
         
         print()
         print('New task added:')
@@ -72,10 +72,10 @@ def	complete(tasks, id):
     return tasks
 
 def is_completed(task):
-    s = status(task)
+    s = get_status(task)
     return s == 'completed'
 
-def status(task):
+def get_status(task):
     return task[-1]
     
 def find_replace(data, new):
@@ -104,11 +104,11 @@ def get_task(tasks, id):
             return task
     return None
 
-def write(task):
-    print('writing..', task)
-    new_idx, title, date, time, status = task
+def add(task):
+    # print('writing..', task)
+    idx, title, date, time, status = task
     with open('tasks.csv', 'a') as f:
-            f.write(new_idx + ',' + title + ',' + date + ',' + time + ',' + status + '\n')
+            f.write(idx + ',' + title + ',' + date + ',' + time + ',' + status + '\n')
   
 def update_in_file(tasks):
     '''Find the task in the file and write the new data'''
@@ -120,5 +120,14 @@ def update_in_file(tasks):
             f.write(f'{idx},{title},{date},{time},{status}\n')
       
 
-def cancel():
-	print('cancel task')
+def cancel(tasks, id):
+    print('cancel task: ', id)
+    task = get_task(tasks, id)
+    print('task:', task)
+    if task:
+        print('delete:', task)
+        tasks.remove(task)
+        update_in_file(tasks)
+    else:
+        print('Task not found..')
+    return tasks
